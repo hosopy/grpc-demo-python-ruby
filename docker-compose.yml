@@ -1,0 +1,18 @@
+version: '2'
+services:
+  front-end-server:
+    build: "./front-end-server"
+    container_name: "front-end-server"
+    ports:
+      - "4567:4567"
+    volumes:
+      - "$PWD/front-end-server:/app"
+    links:
+      - "back-end-server"
+  back-end-server:
+    build: "./back-end-server"
+    container_name: "back-end-server"
+    expose:
+     - "50051"
+    volumes:
+     - "$PWD/back-end-server:/app"
